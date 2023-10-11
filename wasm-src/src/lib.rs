@@ -27,8 +27,23 @@ pub fn generate_julia_fractal() -> Vec<u8>  {
         1.,
         -1.,
         1.,
-        100,
-        100,
+        1000,
+        1000,
+        50   
+    ) 
+}
+
+#[wasm_bindgen]
+pub fn generate_julia_fractal2(image_const: Real, imWidth: u32, imHeight: u32) -> Vec<u8>  {
+    julia_fractal::calculate_new_julia(
+        -1.,
+        image_const,
+        -2.,
+        1.,
+        -1.,
+        1.,
+        imWidth,
+        imHeight,
         50   
     ) 
 }
