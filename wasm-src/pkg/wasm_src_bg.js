@@ -43,32 +43,21 @@ function getArrayU8FromWasm0(ptr, len) {
     return getUint8Memory0().subarray(ptr / 1, ptr / 1 + len);
 }
 /**
-* @returns {Uint8Array}
-*/
-export function generate_julia_fractal() {
-    try {
-        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
-        wasm.generate_julia_fractal(retptr);
-        var r0 = getInt32Memory0()[retptr / 4 + 0];
-        var r1 = getInt32Memory0()[retptr / 4 + 1];
-        var v1 = getArrayU8FromWasm0(r0, r1).slice();
-        wasm.__wbindgen_free(r0, r1 * 1);
-        return v1;
-    } finally {
-        wasm.__wbindgen_add_to_stack_pointer(16);
-    }
-}
-
-/**
-* @param {number} image_const
+* @param {number} real_seed
+* @param {number} imag_seed
+* @param {number} minReal
+* @param {number} minImag
+* @param {number} maxReal
+* @param {number} maxImag
 * @param {number} imWidth
 * @param {number} imHeight
+* @param {number} max_iteration
 * @returns {Uint8Array}
 */
-export function generate_julia_fractal2(image_const, imWidth, imHeight) {
+export function generate_julia_fractal(real_seed, imag_seed, minReal, minImag, maxReal, maxImag, imWidth, imHeight, max_iteration) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
-        wasm.generate_julia_fractal2(retptr, image_const, imWidth, imHeight);
+        wasm.generate_julia_fractal(retptr, real_seed, imag_seed, minReal, minImag, maxReal, maxImag, imWidth, imHeight, max_iteration);
         var r0 = getInt32Memory0()[retptr / 4 + 0];
         var r1 = getInt32Memory0()[retptr / 4 + 1];
         var v1 = getArrayU8FromWasm0(r0, r1).slice();

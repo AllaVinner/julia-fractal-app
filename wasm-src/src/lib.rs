@@ -19,32 +19,27 @@ pub fn greet() {
 
 
 #[wasm_bindgen]
-pub fn generate_julia_fractal() -> Vec<u8>  {
+pub fn generate_julia_fractal(
+    real_seed: Real,
+    imag_seed: Real,
+    minReal: Real,
+    minImag: Real,
+    maxReal: Real,
+    maxImag: Real, 
+    imWidth: u32, 
+    imHeight: u32,
+    max_iteration: usize
+) -> Vec<u8>  {
     julia_fractal::calculate_new_julia(
-        -1.,
-        0.2,
-        -2.,
-        1.,
-        -1.,
-        1.,
-        1000,
-        1000,
-        50   
-    ) 
-}
-
-#[wasm_bindgen]
-pub fn generate_julia_fractal2(image_const: Real, imWidth: u32, imHeight: u32) -> Vec<u8>  {
-    julia_fractal::calculate_new_julia(
-        -1.,
-        image_const,
-        -2.,
-        1.,
-        -1.,
-        1.,
+        real_seed,
+        imag_seed,
+        minReal,
+        minImag,
+        maxReal,
+        maxImag,
         imWidth,
         imHeight,
-        50   
+        max_iteration
     ) 
 }
 
