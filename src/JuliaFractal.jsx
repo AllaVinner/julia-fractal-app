@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as wasm from "../wasm-src/pkg/wasm_src.js";
 
-
-
 function JuliaFractal({            
     seedReal, 
     seedImag,

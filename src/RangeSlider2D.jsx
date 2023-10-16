@@ -18,10 +18,10 @@ function RangeSlider2D(props) {
     let includeAxis = typeof props.includeAxis == "boolean" ? props.includeAxis : true
     let axisThickness = props.axisThickness ? props.axisThickness : 1
 
-    let initial1X = props.initial1X ? props.initial1X : -1.5;
-    let initial1Y = props.initial1Y ? props.initial1Y : -1.5;
-    let initial2X = props.initial2X ? props.initial2X : 0.5;
-    let initial2Y = props.initial2Y ? props.initial2Y : 1.5;
+    let initial1X = typeof props.initial1X == 'number' ? props.initial1X : -1.5;
+    let initial1Y = typeof props.initial1Y == 'number' ? props.initial1Y : -1.5;
+    let initial2X = typeof props.initial2X == 'number' ? props.initial2X : 0.5;
+    let initial2Y = typeof props.initial2Y == 'number' ? props.initial2Y : 1.5;
 
     let [point1Left, setPoint1Left] = useState(xToLeft(initial1X) - pointWidth / 2)
     let [point1Top, setPoint1Top] = useState(yToTop(initial1Y) - pointHeight / 2)
@@ -147,12 +147,12 @@ function RangeSlider2D(props) {
             nextTop = gridHeight - pointHeight
             closeDragElement()
         }
-        if (nextTop < point2Top) {
-            nextTop = point2Top
+        if (nextTop < point2Top + pointHeight/2) {
+            nextTop = point2Top + pointHeight / 2
             closeDragElement()
         }
-        if (nextLeft > point2Left) {
-            nextLeft = point2Left
+        if (nextLeft > point2Left - pointWidth/2) {
+            nextLeft = point2Left - pointWidth / 2
             closeDragElement()
         }
 
@@ -198,12 +198,12 @@ function RangeSlider2D(props) {
             closeDragElement()
         }
 
-        if (nextTop > point1Top) {
-            nextTop = point1Top
+        if (nextTop > point1Top - pointHeight/2) {
+            nextTop = point1Top - pointHeight / 2
             closeDragElement()
         }
-        if (nextLeft < point1Left) {
-            nextLeft = point1Left
+        if (nextLeft < point1Left + pointWidth/2) {
+            nextLeft = point1Left + pointWidth / 2
             closeDragElement()
         }
         setPoint2Left(nextLeft)

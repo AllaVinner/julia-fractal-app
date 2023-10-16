@@ -17,8 +17,8 @@ function Slider2D(props) {
     let includeAxis = typeof props.includeAxis == "boolean" ? props.includeAxis : true
     let axisThickness = props.axisThickness ? props.axisThickness : 1
 
-    let initialX = props.initialX ? props.initialX : -1;
-    let initialY = props.initialY ? props.initialY : 0.25;
+    let initialX = typeof props.initialX == 'number' ? props.initialX : -1;
+    let initialY = typeof props.initialY == 'number' ? props.initialY : 0.25;
 
     // Setup reactives
     let [pointLeft, setPointLeft] = useState(xToLeft(initialX) - pointWidth / 2)
